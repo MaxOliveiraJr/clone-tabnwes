@@ -11,10 +11,10 @@ async function status(request, response) {
   const databaseMaxConnectionsValue = databaseMaxConnectionsResult.rows[0].max_connections;
 
   const databaseOpenedConnectionResult = await database.query({
-    text:"SELECT count(*)::int FROM pg_stat_activity WHERE datname = $1;",
-  values:[databaseName]
-});
-  const databaseOpenedConnectionResultValue =  databaseOpenedConnectionResult.rows.length;
+    text: "SELECT count(*)::int FROM pg_stat_activity WHERE datname = $1;",
+    values: [databaseName]
+  });
+  const databaseOpenedConnectionResultValue = databaseOpenedConnectionResult.rows.length;
 
 
   response.status(200).json({
